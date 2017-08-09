@@ -3,7 +3,6 @@
 > NyaaPantsu desktop app
 
 Current status: 
-- [ ] integrate app with nyaapantsu / add api
 - [ ] streaming using WebTorrent
 
 ## Build Setup

@@ -1,6 +1,6 @@
 {
   "name": "pantsubox",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "xdk78 <xdk78@interia.pl>",
   "description": "NyaaPantsu desktop app",
   "license": "MIT",
@@ -20,7 +20,7 @@
   },
   "build": {
     "productName": "pantsubox",
-    "appId": "org.simulatedgreg.electron-vue",
+    "appId": "org.nyaapantsu.desktop",
     "directories": {
       "output": "build"
     },
@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "pantsu-api": "^0.1.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "vue": "^2.3.3",
