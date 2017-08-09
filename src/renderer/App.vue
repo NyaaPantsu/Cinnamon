@@ -32,7 +32,8 @@
       </v-container>
     </main>
     <v-footer :fixed="fixed">
-      <span>&copy; 2017</span>
+      <v-spacer></v-spacer>
+      <div>© {{ new Date().getFullYear() }}</div>
     </v-footer>
   </v-app>
 </template>
