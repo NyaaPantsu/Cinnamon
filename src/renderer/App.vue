@@ -48,7 +48,7 @@
         fixed: true,
         miniVariant: false,
         items: [
-          {icon: 'apps', title: 'Home', to: '/'}
+          {icon: 'list', title: 'Torrent List', to: '/'}
         ],
         title: 'Pantsubox'
       }

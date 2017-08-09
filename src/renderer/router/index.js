@@ -7,8 +7,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'main',
-      component: require('@/components/Main')
+      name: 'torrentlist',
+      component: require('@/components/TorrentList')
     },
     {
       path: '*',

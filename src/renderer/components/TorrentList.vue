@@ -15,6 +15,6 @@
 
 <script>
   export default {
-    name: 'main'
+    name: 'TorrentList'
   }
 </script>
