@@ -35,7 +35,6 @@
                           <v-card-text class="disabled" v-html="item.description"></v-card-text>
                       </v-card>
                       <v-snackbar
-                              :timeout="timeout"
                               :success="true"
                               v-model="snackbar">Successfully copied torrent link
                           <v-btn dark flat @click.native="snackbar = false">Close</v-btn>
