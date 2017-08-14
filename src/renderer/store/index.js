@@ -7,9 +7,20 @@ export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   state: {
     limit: 20,
-    query: ''
+    query: '',
+    file: '',
+    online: false
   },
-  actions: {},
-  mutations: {},
-  getters: {}
+  actions: {
+  },
+  mutations: {
+    setFile (state, data) {
+      state.file = data
+    },
+    setOnline (state, data) {
+      state.online = data
+    }
+  },
+  getters: {
+  }
 })

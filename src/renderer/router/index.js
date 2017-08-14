@@ -11,6 +11,11 @@ export default new Router({
       component: require('@/components/TorrentList')
     },
     {
+      path: '/player',
+      name: 'player',
+      component: require('@/components/Player')
+    },
+    {
       path: '*',
       redirect: '/'
     }

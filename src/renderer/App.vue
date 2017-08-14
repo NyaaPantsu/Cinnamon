@@ -20,7 +20,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar fixed>
-      <v-toolbar-side-icon @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
@@ -32,6 +32,18 @@
       </v-container>
     </main>
     <v-footer :fixed="fixed">
+      <div v-if="$store.state.online">
+        <v-chip small outline class="green--text">
+          <v-avatar>
+            <v-icon class="green--text">info_outline</v-icon>
+          </v-avatar>online</v-chip>
+      </div>
+      <div v-if="!$store.state.online">
+        <v-chip small outline class="red--text">
+          <v-avatar>
+            <v-icon class="red--text">info_outline</v-icon>
+          </v-avatar>offline</v-chip
+        ></div>
       <v-spacer></v-spacer>
       <div>© {{ new Date().getFullYear() }}</div>
     </v-footer>

@@ -5,6 +5,7 @@ import router from './router'
 import store from './store'
 import vuetify from './vuetify'
 import clipboard from './util/clipboard'
+import player from './util/player'
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = axios
@@ -17,5 +18,6 @@ new Vue({
   store,
   vuetify,
   clipboard,
+  player,
   template: '<App/>'
 }).$mount('#app')
