@@ -23,7 +23,7 @@
   },
   "build": {
     "productName": "cinnamon",
-    "appId": "org.simulatedgreg.electron-vue",
+    "appId": "cat.pantsu.cinnamon",
     "directories": {
       "output": "build"
     },
