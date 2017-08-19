@@ -60,6 +60,7 @@
     "kitsu": "^2.0.4",
     "node-mpv": "^1.2.1",
     "pantsu-api": "^0.1.1",
+    "pug": "^2.0.0-rc.3",
     "utf-8-validate": "^3.0.3",
     "vue": "^2.3.3",
     "vue-electron": "^1.0.6",
