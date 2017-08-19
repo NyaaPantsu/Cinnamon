@@ -1,5 +1,5 @@
 const state = {
-  preferredPlayer: ''
+  preferredPlayer: 'mpv'
 }
 
 const mutations = {
