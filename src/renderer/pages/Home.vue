@@ -2,7 +2,7 @@
   <torrent-list></torrent-list>
 </template>
 
-<<script>
+<script>
 export default {
 
 }
