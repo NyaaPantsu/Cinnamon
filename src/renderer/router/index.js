@@ -24,17 +24,6 @@ export default new Router({
       ]
     },
     {
-      path: '/player',
-      name: 'video-player',
-      component: LayoutDefault,
-      children: [
-        {
-          path: '',
-          component: VideoPlayer
-        }
-      ]
-    },
-    {
       path: '*',
       redirect: '/'
     }
