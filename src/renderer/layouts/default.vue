@@ -62,7 +62,15 @@
         fixed: true,
         miniVariant: false,
         items: [
-          {icon: 'list', title: 'Home', to: '/'}
+          {
+            icon: 'list',
+            title: 'Home',
+            to: '/'
+          },
+          { icon: 'list',
+            title: 'Kitsu Search',
+            to: '/kitsusearch'
+          }
         ],
         title: 'Cinnamon'
       }
