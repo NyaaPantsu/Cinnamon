@@ -6,7 +6,6 @@ import LayoutDefault from '@/layouts/default.vue'
 // pages
 import PageHome from '@/pages/Home.vue'
 // components
-import VideoPlayer from '@/components/VideoPlayer.vue'
 
 Vue.use(Router)
 
