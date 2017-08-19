@@ -1,9 +1,9 @@
 {
   "name": "cinnamon",
-  "version": "0.0.0",
-  "author": "",
+  "version": "0.1.0",
+  "author": "NyaaPantsu",
   "description": "A pantsu client",
-  "license": null,
+  "license": "MIT",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
