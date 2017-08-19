@@ -1,19 +1,38 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+// layouts
+import LayoutDefault from '@/layouts/default.vue'
+// pages
+import PageHome from '@/pages/Home.vue'
+// components
+import VideoPlayer from '@/components/VideoPlayer.vue'
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'torrentlist',
-      component: require('@/components/TorrentList')
+      name: 'home',
+      component: LayoutDefault,
+      children: [
+        {
+          path: '',
+          component: PageHome
+        }
+      ]
     },
     {
       path: '/player',
-      name: 'player',
-      component: require('@/components/Player')
+      name: 'video-player',
+      component: LayoutDefault,
+      children: [
+        {
+          path: '',
+          component: VideoPlayer
+        }
+      ]
     },
     {
       path: '*',

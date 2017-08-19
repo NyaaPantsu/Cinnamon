@@ -36,6 +36,10 @@ let webConfig = {
         })
       },
       {
+        test: /\.styl$/,
+        loader: ['style-loader', 'css-loader', 'stylus-loader']
+      },
+      {
         test: /\.html$/,
         use: 'vue-html-loader'
       },

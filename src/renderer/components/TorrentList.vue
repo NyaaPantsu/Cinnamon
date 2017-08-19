@@ -1,17 +1,17 @@
 <template>
     <v-layout justify-center align-center row wrap>
-        <v-flex xs12 sm8 md6>
+        <v-flex xs12>
             <div class="text-xs-center">
-                <img src="/static/logo.png" alt="Pantsu Logo" class="mb-5"/>
+                <img src="https://nyaa.pantsu.cat/img/logo.png" alt="Pantsu Logo" class="mb-5"/>
             </div>
             <v-card>
                 <v-toolbar>
                     <v-toolbar-title>Torrents</v-toolbar-title>
                 </v-toolbar>
-                <div class="text-xs-center" v-if="!$store.state.online">
+                <div class="text-xs-center" v-if="online">
                 <v-progress-circular
-                        v-bind:indeterminate="!$store.state.online"
-                        v-bind:active="!$store.state.online"
+                        indeterminate
+                        v-bind:active="!online || loading"
                         class="primary--text"
                 ></v-progress-circular>
                 </div>
@@ -34,9 +34,9 @@
                                         <span class="headline">More info</span>
                                         <v-list-tile-action>
                                             <v-spacer></v-spacer>
-                                            <v-btn icon ripple v-clipboard="item.torrent" @click="snackbar = true">
+                                            <!--<v-btn icon ripple v-clipboard="item.torrent" @click="snackbar = true">
                                                 <v-icon class="gray--text text--lighten-2">content_copy</v-icon>
-                                            </v-btn>
+                                            </v-btn>-->
                                         </v-list-tile-action>
                                     </v-card-title>
                                     <v-card-text class="disabled" v-html="item.description"></v-card-text>
@@ -51,7 +51,7 @@
                         </v-list-tile-action>
                         <v-list-tile-action>
                             <v-spacer></v-spacer>
-                                <v-btn icon ripple dark slot="activator" @click.native="setFile(item.magnet)" to="Player">
+                                <v-btn icon ripple dark slot="activator" @click.native="stream(item.magnet)">
                                     <v-icon class="purple--text text--lighten-2">play_circle_filled</v-icon>
                                 </v-btn>
                             <v-spacer></v-spacer>
@@ -66,16 +66,28 @@
 <script>
 /* eslint-disable indent */
 import pantsu from 'pantsu-api'
+import WebTorrent from 'webtorrent'
+import MPV from 'node-mpv'
+import { mapGetters } from 'vuex'
 export default {
   name: 'TorrentList',
   data () {
     return {
         torrents: [],
-        snackbar: false
+        snackbar: false,
+        loading: false,
+        mpv: new MPV(),
+        videoServer: null
     }
   },
+  computed: mapGetters([
+    'query',
+    'limit',
+    'online',
+    'filePath'
+  ]),
   mounted () {
-      pantsu.search(this.$store.state.query, this.$store.state.limit).then((data) => {
+      pantsu.search(this.query, this.limit).then((data) => {
           this.torrents = data.torrents
           this.$store.commit('setOnline', true)
       }).catch((err) => {
@@ -84,9 +96,25 @@ export default {
       })
   },
   methods: {
-      setFile: function (data) {
-          this.$store.commit('setFile', data)
-      }
+    setMagnetURI: function (data) {
+        this.$store.commit('setMagnetURI', data)
+    },
+    stream: function (magnetURI) {
+      this.loading = true
+      console.log('instructed to stream', magnetURI)
+      let wt = new WebTorrent()
+      let self = this
+      wt.add(magnetURI, function (torrent) {
+        self.videoServer = torrent.createServer()
+        self.videoServer.listen(0)
+        console.log('video server listening on http://localhost:' + self.videoServer.address().port)
+        let file = torrent.files.find(function (file) {
+          return file.name.endsWith('.mp4') || file.name.endsWith('.mkv') || file.name.endsWith('.avi')
+        })
+        self.$store.commit('setFilePath', file.path)
+        self.mpv.loadStream('http://localhost' + ':' + self.videoServer.address().port + '/0/' + self.filePath)
+      })
+    }
   }
 }
 </script>
