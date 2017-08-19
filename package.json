@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
-    "kitsu-api": "^0.0.1",
+    "kitsu": "^2.0.4",
     "node-mpv": "^1.2.1",
     "pantsu-api": "^0.1.1",
     "utf-8-validate": "^3.0.3",
