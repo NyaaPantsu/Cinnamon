@@ -8,6 +8,7 @@ import store from './store'
 // plugins
 import './plugins/vuetify.js'
 import './plugins/components.js'
+import './plugins/kitsu-api.js'
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = axios
