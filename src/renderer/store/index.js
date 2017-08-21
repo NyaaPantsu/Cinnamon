@@ -10,7 +10,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   modules,
   plugins: [createPersistedState({
-    key: 'cinnamon'
+    key: 'cinnamon',
+    paths: ['preferences']
   })],
   strict: process.env.NODE_ENV !== 'production'
 })
